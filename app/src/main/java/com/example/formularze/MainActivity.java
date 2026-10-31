@@ -27,6 +27,14 @@ public class MainActivity extends AppCompatActivity {
 
     private String selectedDate = "";
 
+    private String previousService = "";
+    private String previousDate = "";
+    private String previousTime = "";
+    private String previousContact = "";
+    private boolean previousSms = false;
+    private boolean previousTerms = false;
+    private String previousSummary = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -144,6 +152,47 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void clearFormWithUndo() {
-        // Tu w kolejnym kroku dodamy pełną logikę czyszczenia i cofania
+        previousService = spService.getSelectedItem() != null ? spService.getSelectedItem().toString() : "";
+        previousDate = selectedDate;
+        previousTime = etTime.getText().toString();
+        previousContact = etContact.getText().toString();
+        previousSms = cbSms.isChecked();
+        previousTerms = cbTerms.isChecked();
+        previousSummary = tvSummary.getText().toString();
+
+        spService.setSelection(0);
+        selectedDate = "";
+        btnDate.setText(R.string.btn_date);
+        etTime.setText("");
+        etContact.setText("");
+        cbSms.setChecked(false);
+        cbTerms.setChecked(false);
+        tvSummary.setText("");
+
+        etTime.setError(null);
+        etContact.setError(null);
+
+        Snackbar.make(findViewById(R.id.main), R.string.cleared_msg, Snackbar.LENGTH_LONG)
+                .setAction("Cofnij", v -> restoreForm())
+                .show();
+    }
+
+    private void restoreForm() {
+        if (!previousService.isEmpty()) {
+            ArrayAdapter adapter = (ArrayAdapter) spService.getAdapter();
+            int position = adapter.getPosition(previousService);
+            if (position >= 0) {
+                spService.setSelection(position);
+            }
+        }
+        selectedDate = previousDate;
+        if (!selectedDate.isEmpty()) {
+            btnDate.setText(selectedDate);
+        }
+        etTime.setText(previousTime);
+        etContact.setText(previousContact);
+        cbSms.setChecked(previousSms);
+        cbTerms.setChecked(previousTerms);
+        tvSummary.setText(previousSummary);
     }
 }
