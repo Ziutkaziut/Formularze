@@ -26,4 +26,9 @@
         <item>Bazy danych</item>
         <item>Sieci komputerowe</item>
     </string-array>
+    <string name="error_name">Podaj imię i nazwisko</string>
+    <string name="error_email">Niepoprawny adres e-mail</string>
+    <string name="error_date">Wybierz datę urodzenia</string>
+    <string name="error_course">Wybierz kurs z listy</string>
+    <string name="error_mode">Zaznacz tryb zajęć</string>
 </resources>

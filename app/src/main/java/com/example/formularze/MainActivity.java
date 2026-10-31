@@ -1,6 +1,8 @@
 package com.example.formularze;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,8 +13,11 @@ import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.materialswitch.MaterialSwitch;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private MaterialSwitch swNewsletter;
     private CheckBox cbTerms;
 
-    private String birthDate = "2000-01-01";
+    private String birthDate = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
         cbTerms.setOnCheckedChangeListener((buttonView, isChecked) ->
                 btnSubmit.setEnabled(isChecked));
 
+        btnBirthDate.setOnClickListener(v -> showDatePicker());
+
         sbLevel.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -85,7 +92,62 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) { }
         });
 
-        btnSubmit.setOnClickListener(v -> submitForm());
+        btnSubmit.setOnClickListener(v -> {
+            if (validateForm()) {
+                submitForm();
+            }
+        });
+    }
+
+    private void showDatePicker() {
+        Calendar calendar = Calendar.getInstance();
+
+        DatePickerDialog dialog = new DatePickerDialog(
+                this,
+                (view, year, month, dayOfMonth) -> {
+                    birthDate = String.format(Locale.US, "%04d-%02d-%02d",
+                            year, month + 1, dayOfMonth);
+                    btnBirthDate.setText(birthDate);
+                },
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH));
+
+        dialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+        dialog.show();
+    }
+
+    private boolean validateForm() {
+        String name = etName.getText().toString().trim();
+        if (name.isEmpty()) {
+            etName.setError(getString(R.string.error_name));
+            etName.requestFocus();
+            return false;
+        }
+
+        String email = etEmail.getText().toString().trim();
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            etEmail.setError(getString(R.string.error_email));
+            etEmail.requestFocus();
+            return false;
+        }
+
+        if (birthDate.isEmpty()) {
+            Toast.makeText(this, R.string.error_date, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (spCourse.getSelectedItemPosition() == 0) {
+            Toast.makeText(this, R.string.error_course, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (rgMode.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, R.string.error_mode, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        return true;
     }
 
     private void submitForm() {
