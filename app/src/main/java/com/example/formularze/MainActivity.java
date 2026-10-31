@@ -1,6 +1,9 @@
 package com.example.formularze;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -41,8 +44,16 @@ public class MainActivity extends AppCompatActivity {
         swNewsletter = findViewById(R.id.swNewsletter);
         cbTerms = findViewById(R.id.cbTerms);
 
+        setUpCourseSpinner();
         setUpListeners();
         tvLevelValue.setText(String.valueOf(sbLevel.getProgress()));
+    }
+
+    private void setUpCourseSpinner() {
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                this, R.array.courses, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spCourse.setAdapter(adapter);
     }
 
     private void setUpListeners() {
@@ -60,6 +71,18 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) { }
+        });
+
+        spCourse.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position > 0) {
+                    tvSummary.setText("");
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) { }
         });
 
         btnSubmit.setOnClickListener(v -> submitForm());

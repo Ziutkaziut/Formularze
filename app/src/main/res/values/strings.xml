@@ -19,4 +19,11 @@
     <string name="yes_short">tak</string>
     <string name="no_short">nie</string>
     <string name="sent">Zgłoszenie wysłane</string>
+    <string-array name="courses">
+        <item>-- wybierz kurs --</item>
+        <item>Programowanie w Javie</item>
+        <item>Aplikacje mobilne</item>
+        <item>Bazy danych</item>
+        <item>Sieci komputerowe</item>
+    </string-array>
 </resources>
