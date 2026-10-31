@@ -20,7 +20,7 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     private Spinner spService;
-    private Button btnDate, btnBook;
+    private Button btnDate, btnBook, btnClear;
     private EditText etTime, etContact;
     private CheckBox cbSms, cbTerms;
     private TextView tvSummary;
@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         spService = findViewById(R.id.spService);
         btnDate = findViewById(R.id.btnDate);
         btnBook = findViewById(R.id.btnBook);
+        btnClear = findViewById(R.id.btnClear);
         etTime = findViewById(R.id.etTime);
         etContact = findViewById(R.id.etContact);
         cbSms = findViewById(R.id.cbSms);
@@ -63,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
                 showConfirmationDialog();
             }
         });
+
+        btnClear.setOnClickListener(v -> confirmClearForm());
     }
 
     private void showDatePicker() {
@@ -129,5 +132,18 @@ public class MainActivity extends AppCompatActivity {
         Snackbar.make(findViewById(R.id.main), R.string.booked_msg, Snackbar.LENGTH_LONG)
                 .setAction(R.string.undo_action, v -> tvSummary.setText(""))
                 .show();
+    }
+
+    private void confirmClearForm() {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.clear_title)
+                .setMessage(R.string.clear_msg)
+                .setPositiveButton("Tak", (dialog, which) -> clearFormWithUndo())
+                .setNegativeButton("Nie", null)
+                .show();
+    }
+
+    private void clearFormWithUndo() {
+        // Tu w kolejnym kroku dodamy pełną logikę czyszczenia i cofania
     }
 }
