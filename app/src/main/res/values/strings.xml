@@ -68,4 +68,19 @@
     <string name="clear_title">Wyczyścić formularz?</string>
     <string name="clear_msg">Wszystkie wprowadzone dane zostaną utracone.</string>
     <string name="cleared_msg">Formularz wyczyszczony</string>
+
+    <string name="header_bmi">Kalkulator BMI</string>
+    <string name="label_weight">Waga (kg)</string>
+    <string name="label_height">Wzrost (cm)</string>
+    <string name="hint_weight">np. 70</string>
+    <string name="hint_height">np. 175</string>
+    <string name="btn_calculate">OBLICZ BMI</string>
+    <string name="error_weight">Podaj wagę</string>
+    <string name="error_height">Podaj wzrost</string>
+    <string name="bmi_result">Twoje BMI: %1$.2f\nKategoria: %2$s</string>
+    <string name="bmi_underweight">Niedowaga</string>
+    <string name="bmi_normal">Waga prawidłowa</string>
+    <string name="bmi_overweight">Nadwaga</string>
+    <string name="bmi_obese">Otyłość</string>
+    <string name="bmi_calculated">Obliczono BMI</string>
 </resources>
