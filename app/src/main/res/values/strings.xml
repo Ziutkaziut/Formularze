@@ -31,4 +31,10 @@
     <string name="error_date">Wybierz datę urodzenia</string>
     <string name="error_course">Wybierz kurs z listy</string>
     <string name="error_mode">Zaznacz tryb zajęć</string>
+    <string name="confirm_title">Wysłać zgłoszenie?</string>
+    <string name="confirm_message">Sprawdź dane przed wysłaniem.</string>
+    <string name="yes">Tak, wyślij</string>
+    <string name="no">Popraw</string>
+    <string name="sent">Zgłoszenie wysłane</string>
+    <string name="undo">Cofnij</string>
 </resources>
