@@ -94,6 +94,14 @@
             android:enabled="false"
             android:text="@string/btn_book" />
 
+        <Button
+            android:id="@+id/btnClear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#B00020"
+            android:text="@string/btn_clear" />
+
         <TextView
             android:id="@+id/tvSummary"
             android:layout_width="match_parent"

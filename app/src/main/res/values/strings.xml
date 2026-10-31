@@ -64,4 +64,8 @@
         <item>Badanie laboratoryjne</item>
         <item>Przegląd okresowy</item>
     </string-array>
+    <string name="btn_clear">Wyczyść formularz</string>
+    <string name="clear_title">Wyczyścić formularz?</string>
+    <string name="clear_msg">Wszystkie wprowadzone dane zostaną utracone.</string>
+    <string name="cleared_msg">Formularz wyczyszczony</string>
 </resources>
