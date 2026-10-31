@@ -37,4 +37,31 @@
     <string name="no">Popraw</string>
     <string name="sent">Zgłoszenie wysłane</string>
     <string name="undo">Cofnij</string>
+    <string name="header_visit">Rezerwacja wizyty</string>
+    <string name="label_service">Usługa</string>
+    <string name="label_date">Data wizyty</string>
+    <string name="label_time">Godzina</string>
+    <string name="label_contact">Dane kontaktowe</string>
+    <string name="hint_time">12:00</string>
+    <string name="hint_contact">Nr telefonu lub email</string>
+    <string name="btn_date">Wybierz datę</string>
+    <string name="sms_reminder">Powiadomienie SMS</string>
+    <string name="terms_visit">Akceptuję regulamin przychodni</string>
+    <string name="btn_book">ZAREZERWUJ</string>
+    <string name="error_service">Wybierz usługę z listy</string>
+    <string name="error_time">Podaj godzinę wizyty</string>
+    <string name="error_contact">Podaj dane kontaktowe</string>
+    <string name="dialog_title">Potwierdź rezerwację</string>
+    <string name="dialog_msg">Czy na pewno chcesz zarezerwować wizytę?</string>
+    <string name="yes_book">Tak, zarezerwuj</string>
+    <string name="no_book">Popraw</string>
+    <string name="booked_msg">Wizyta zarezerwowana</string>
+    <string name="undo_action">Cofnij</string>
+    <string name="summary_visit">Usługa: %1$s\nData: %2$s\nGodz: %3$s\nKontakt: %4$s\nSMS: %5$s</string>
+    <string-array name="services">
+        <item>-- wybierz usługę --</item>
+        <item>Konsultacja lekarska</item>
+        <item>Badanie laboratoryjne</item>
+        <item>Przegląd okresowy</item>
+    </string-array>
 </resources>
